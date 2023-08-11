@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const  User = require("../models/User");
+const User = require("../models/User");
 const bcrypt = require("bcrypt");
-// const {aws4} = require("mongodb/src/deps");
+
 
 //REGISTER
-router.post('/register',async (req, res) => {
+router.post('/register', async (req, res) => {
    try {
 
       //generate new password
@@ -19,12 +19,12 @@ router.post('/register',async (req, res) => {
       //save user and return response
       const user = await newUser.save();
       res.status(200).json(user);
-   } catch(err) {
+   } catch (err) {
       res.status(500).json(err)
    }
 });
 
-   //LOGIN
+//LOGIN
 router.post("/login", async (req, res) => {
    try {
       const user = await User.findOne({email: req.body.email});
@@ -38,7 +38,6 @@ router.post("/login", async (req, res) => {
       res.status(500).json(err)
    }
 })
-
 
 
 module.exports = router;
