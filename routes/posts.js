@@ -85,7 +85,7 @@ router.get("/timeline/:userId", async (req, res) => {
       res.status(200).json(userPosts.concat(...friendPosts))
 
    } catch (err) {
-      res.status(506).json("Не получилось получить временную шкалу постов").console.log("Нихуя не получил посты");
+      res.status(506).json("Не получилось получить временную шкалу постов");
    }
 })
 
